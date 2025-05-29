@@ -1,0 +1,242 @@
+/* Custom styles for dark theme and animations */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0a0a0a; /* Very dark gray */
+    color: #e0e0e0; /* Light gray for general text */
+    /* Hide default cursor for custom cursor on non-touch devices */
+    cursor: none;
+}
+
+/* Override cursor for touch devices */
+@media (pointer: coarse) {
+    body {
+        cursor: default; /* Show default cursor on touch devices */
+    }
+    #custom-cursor {
+        display: none !important; /* Hide custom cursor on touch devices */
+    }
+}
+
+.gradient-bg {
+    /* Dark gray to subtle magenta gradient for the dark theme */
+    background: linear-gradient(to right, #1a1a1a, #2c002c); /* Dark gray to dark magenta */
+}
+.hero-section {
+    background: linear-gradient(to right, #1a1a1a, #262626); /* Dark gray gradient for sleekness */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Blinking Cyan Dots Background */
+.blinking-dot {
+    position: absolute;
+    background-color: cyan; /* Highlight Cyan */
+    border-radius: 50%;
+    animation: blinkDot var(--animation-duration) linear var(--animation-delay) infinite alternate;
+    z-index: 0; /* Behind hero content */
+    pointer-events: none; /* Ensure they don't interfere with clicks */
+    filter: blur(0.5px); /* Slightly blurred for a softer look */
+}
+
+@keyframes blinkDot {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 0.8; transform: scale(1.0); }
+}
+
+/* Interactive Letter Glow for Hero H1 */
+.hero-letter-glow {
+    display: inline-block; /* Essential for span to apply transform/shadow correctly */
+    transition: text-shadow 0.2s ease-out, color 0.2s ease-out, transform 0.1s ease-out;
+}
+
+.hero-letter-glow:hover {
+    color: #10b981; /* Highlight green text */
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.8), 0 0 20px rgba(16, 185, 129, 0.6);
+    transform: translateY(-2px) scale(1.05); /* Slight lift and scale */
+}
+
+.product-card {
+    background-color: #1a1a1a; /* Darker gray for cards */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    border: 1px solid #333333; /* Darker border */
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    /* Green neon glow on border */
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.7), 0 15px 30px rgba(0, 0, 0, 0.4);
+    border-color: #10b981; /* Highlight green border */
+}
+.btn-primary {
+    background-color: #10b981; /* Emerald 500 - Highlight Green */
+    color: #ffffff;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.btn-primary:hover {
+    background-color: #059669; /* Darker emerald on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.4); /* Green glow effect */
+}
+.btn-secondary {
+    background-color: #555555; /* Medium gray */
+    color: #ffffff;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+.btn-secondary:hover {
+    background-color: #444444; /* Darker gray on hover */
+    transform: translateY(-2px);
+}
+.process-icon {
+    font-size: 2.5rem; /* Base size for mobile */
+    color: #e800a7; /* Magenta - Highlight Magenta */
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+@media (min-width: 768px) { /* Larger size for medium and up screens */
+    .process-icon {
+        font-size: 3rem;
+    }
+}
+.process-step-card:hover .process-icon { /* Apply hover to parent card for icon animation */
+    transform: scale(1.1) rotate(5deg); /* Slightly larger and rotated */
+    color: #10b981; /* Change to green on hover */
+    text-shadow: 0 0 15px rgba(16, 185, 129, 0.8); /* Green glow */
+}
+.process-step-card {
+    background-color: #1a1a1a; /* Darker gray for process cards */
+    border: 1px solid #333333;
+}
+
+/* Navigation button specific styles */
+.nav-link {
+    position: relative;
+    padding: 0.5rem 0.75rem; /* Adjusted padding for mobile */
+    border-radius: 9999px; /* Fully rounded */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+    font-weight: 600; /* Semi-bold */
+    text-decoration: none; /* Remove underline */
+    font-size: 0.9rem; /* Slightly smaller font for mobile nav */
+}
+@media (min-width: 768px) { /* Larger padding and font for medium and up screens */
+    .nav-link {
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+    }
+}
+.nav-link:hover {
+    background-color: rgba(16, 185, 129, 0.2); /* Subtle green background on hover */
+    color: #10b981; /* Highlight green text */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); /* Green glow */
+    text-shadow: 0 0 8px rgba(16, 185, 129, 0.6); /* Subtle text glow */
+}
+.nav-link.active {
+    background-color: #10b981; /* Solid green for active link */
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Stronger text glow for active */
+}
+.nav-link.active:hover {
+    background-color: #059669; /* Darker green on hover for active */
+}
+
+/* Custom Cursor styles */
+#messageBox {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #10b981; /* Emerald 500 */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#messageBox.show {
+    opacity: 1;
+}
+
+#custom-cursor {
+    position: fixed;
+    pointer-events: none; /* Allows clicks on elements underneath */
+    z-index: 9999;
+    font-size: 2rem; /* Size of the star */
+    color: #10b981; /* Highlight green */
+    text-shadow: 0 0 15px rgba(16, 185, 129, 0.8), 0 0 25px rgba(16, 185, 129, 0.6); /* Glowing effect */
+    transition: transform 0.05s ease-out; /* Smooth follow */
+    transform: translate(-50%, -50%); /* Center the cursor element */
+    display: none; /* Hidden by default */
+}
+
+/* Responsive adjustments for text and image sizes */
+/* Hero Section */
+.hero-section h1 {
+    font-size: 2.5rem; /* Smaller default for very small screens */
+}
+.hero-section p {
+    font-size: 1rem; /* Smaller default for very small screens */
+}
+@media (min-width: 480px) { /* Custom small breakpoint for more control */
+     .hero-section h1 {
+        font-size: 3.5rem;
+    }
+    .hero-section p {
+        font-size: 1.125rem;
+    }
+}
+@media (min-width: 640px) { /* sm breakpoint */
+    .hero-section h1 {
+        font-size: 4.5rem; /* sm:text-5xl */
+    }
+    .hero-section p {
+        font-size: 1.25rem; /* sm:text-xl */
+    }
+}
+@media (min-width: 768px) { /* md breakpoint */
+    .hero-section h1 {
+        font-size: 5rem; /* md:text-6xl, adjusted from 7xl to prevent excessive size */
+    }
+    .hero-section p {
+        font-size: 1.5rem; /* md:text-2xl */
+    }
+}
+@media (min-width: 1024px) { /* lg breakpoint */
+    .hero-section h1 {
+        font-size: 6rem; /* lg:text-7xl */
+    }
+}
+
+/* Section Headings */
+h2 {
+    font-size: 2rem; /* Default for small screens (text-2xl) */
+}
+@media (min-width: 640px) { /* sm breakpoint */
+    h2 {
+        font-size: 2.5rem; /* sm:text-4xl */
+    }
+}
+
+/* Product Cards */
+.product-card h3 {
+    font-size: 1.125rem; /* Default for small screens (text-lg) */
+}
+.product-card span {
+    font-size: 1.5rem; /* Default for small screens (text-xl) */
+}
+.product-card img {
+    height: 10rem; /* Default height for small screens (h-40) */
+}
+@media (min-width: 640px) { /* sm breakpoint */
+    .product-card h3 {
+        font-size: 1.5rem; /* sm:text-2xl */
+    }
+    .product-card span {
+        font-size: 2rem; /* sm:text-3xl */
+    }
+    .product-card img {
+        height: 16rem; /* sm:h-64 */
+    }
+}
